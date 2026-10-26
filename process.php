@@ -16,3 +16,4 @@ if ($register) {
 } else {
     echo "Failed to register a new user";
 }
+echo "we are haveing fun ";
