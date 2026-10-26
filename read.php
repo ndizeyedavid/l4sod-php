@@ -12,6 +12,7 @@ include "connect.php";
 
 <body>
     <h1>Users in our DB</h1>
+    <a href="index.php">Insert new user</a>
     <table border="1" style="width: 100%;">
         <tr>
             <th>#</th>
@@ -29,28 +30,30 @@ include "connect.php";
         $count = 1;
         while ($row = mysqli_fetch_assoc($data)) {
         ?>
-            <tr>
-                <td>
-                    <?php echo $count; ?>
-                </td>
-                <td>
-                    <?php echo $row['id'] ?>
-                </td>
-                <td>
-                    <?php echo $row['names'] ?>
-                </td>
-                <td>
-                    <?php echo $row['email'] ?>
-                </td>
-                <td>
-                    <?php echo $row['password'] ?>
-                </td>
-                <td>
-                    <?php echo $row['createdAt'] ?>
-                </td>
-                <td><a href="update.php?id=<?php echo $row['id'] ?>">Update</a></td>
-                <td><a href="delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
-            </tr>
+        <tr>
+            <td>
+                <?php echo $count; ?>
+            </td>
+            <td>
+                <?php echo $row['id'] ?>
+            </td>
+            <td style="text-transform: capitalize;">
+                <?php echo $row['names'] ?>
+            </td>
+            <td>
+                <?php echo $row['email'] ?>
+            </td>
+            <td>
+                <?php echo $row['password'] ?>
+            </td>
+            <td>
+                <?php echo $row['createdAt'] ?>
+            </td>
+            <td><a href="update.php?id=<?php echo $row['id'] ?>">Update</a></td>
+            <?php $names = $row['names']; ?>
+            <td><a onclick="return confirm('Are you sure you want to delete <?php echo $names ?>?')"
+                    href="delete.php?id=<?php echo $row['id'] ?>">Delete</a></td>
+        </tr>
         <?php
             $count++;
         }

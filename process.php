@@ -13,7 +13,7 @@ $register = mysqli_query($conn, "INSERT INTO users(id, names, email, password, c
 
 if ($register) {
     echo "User($username) has been registered";
+    header("location: read.php");
 } else {
     echo "Failed to register a new user";
 }
-echo "we are haveing fun ";
